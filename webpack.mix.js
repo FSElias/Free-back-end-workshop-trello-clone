@@ -14,13 +14,33 @@ const tailwindcss = require('tailwindcss'); /* Add this line at the top */
 
 //https://ralphjsmit.com/tailwind-sass-laravel/
 
+mix.extend(
+    'graphql',
+    new class {
+        dependencies() {
+            return ['graphql', 'graphql-tag']
+        }
+
+        webpackRules() {
+            return {
+                test: /\.(graphql|gql)$/,
+                exclude: /node_modules/,
+                loader: 'graphql-tag/loader'
+            }
+        }
+    }()
+);
+
+
 mix.js('resources/js/app.js', 'public/js')
     .vue()
+    .graphql()
     .sass('resources/sass/app.scss', 'public/css')
     .options({
-        postCss: [ tailwindcss('./tailwind.config.js') ],
+        postCss: [tailwindcss('./tailwind.config.js')],
     })
     .version();
+
 
 // mix.js('resources/js/app.js', 'public/js')
 //     .vue()
