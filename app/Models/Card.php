@@ -9,7 +9,7 @@ class Card extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'order', 'list_id'];
+    protected $fillable = ['title', 'order', 'card_list_id', 'user_id'];
 
     public function cardList(): BelongsTo
     {
