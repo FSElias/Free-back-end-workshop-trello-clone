@@ -12,6 +12,7 @@ const tailwindcss = require('tailwindcss'); /* Add this line at the top */
  |
  */
 
+//https://ralphjsmit.com/tailwind-sass-laravel/
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
